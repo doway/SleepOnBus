@@ -22,7 +22,7 @@ import dowill.SleepOnBus.Model.LineInfo;
 import dowill.SleepOnBus.Model.StopInfo;
 
 public class BusWebservice {
-	private static final String _backUrl = "http://www.richseller.url.tw/spi/spi.aspx?";
+	private static final String _backUrl = "http://richseller.doway.com.tw/spi/spi.aspx?";
 	private Context _context = null;
 	private static final int _multiInt = (int) 1E6;
 	private static String _owner = null;
@@ -176,7 +176,7 @@ public class BusWebservice {
 	}
 
 	private static String replaceFullShapeChar(String inputString) {
-		char[] fullChar = { '¢∞', '¢±', '¢≤', '¢≥', '¢¥', '¢µ', '¢∂', '¢∑', '¢∏', '¢Ø' };
+		char[] fullChar = { 'Ôºë', 'Ôºí', 'Ôºì', 'Ôºî', 'Ôºï', 'Ôºñ', 'Ôºó', 'Ôºò', 'Ôºô', 'Ôºê' };
 		char[] ansiChar = { '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' };
 		for (int i = 0; i < fullChar.length; i++)
 			inputString = inputString.replace(fullChar[i], ansiChar[i]);

@@ -1,6 +1,12 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2EAE4945-4257-4BF3-B25F-1328C4D93BD7}"
+	ProjectSection(SolutionItems) = preProject
+		BusWeb.vsmdi = BusWeb.vsmdi
+		LocalTestRun.testrunconfig = LocalTestRun.testrunconfig
+	EndProjectSection
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusWeb", "BusWeb\BusWeb.csproj", "{2BE49A7B-8096-4F62-9C27-7FDAF5A37D74}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bus.Model", "Bus.Model\Bus.Model.csproj", "{D9066E36-D35C-4EC9-9A16-BCBB37494964}"
@@ -8,12 +14,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusWeb.DAO", "BusWeb.DAO\BusWeb.DAO.csproj", "{DCF08BDA-389D-409E-AA7B-75AD5679FEE3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusWeb.UnitTest", "BusWeb.UnitTest\BusWeb.UnitTest.csproj", "{26FEB296-C76D-44FA-AA50-CC19B2825A17}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2EAE4945-4257-4BF3-B25F-1328C4D93BD7}"
-	ProjectSection(SolutionItems) = preProject
-		BusWeb.vsmdi = BusWeb.vsmdi
-		LocalTestRun.testrunconfig = LocalTestRun.testrunconfig
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution

@@ -7,37 +7,15 @@ using System.IO;
 using System.Reflection;
 using System.Text;
 using System.Web;
-using BusWeb.DAO.DataSet;
-using DOWILL.DBAccess;
 using log4net;
 
 namespace BusWeb.DAO
 {
-    public class BusWebDataService : DBServiceBase
+    public class BusWebDataService
     {
         protected static readonly ILog _log = LogManager.GetLogger(typeof(BusWebDataService));
-        protected const string CONST_APP_CONNECTION_KEY = "BusWeb.DAO.Properties.Settings.ConnectionString";
-        protected static readonly string _currentAssemblyLocation = null;
         protected static readonly double DELTA_RADIUS = GetDeltaRadius(10); // Get coordinator delta of 10 KM
-#if(DEBUG)
-        static BusWebDataService()
-        {
-            FileInfo file = new FileInfo(Assembly.GetExecutingAssembly().Location);
-            _currentAssemblyLocation = file.DirectoryName;
-            Debug.WriteLine(string.Format("_currentAssemblyCodebase={0}", _currentAssemblyLocation));
-        }
 
-        private BusWebDataService() :
-            base(string.Format(ConfigurationManager.ConnectionStrings[CONST_APP_CONNECTION_KEY].ConnectionString, _currentAssemblyLocation + @"\..\..\..\BusWeb.UnitTest\Database\"),
-            DBOperatorType.OleDBOperator) { }
-#else
-        private BusWebDataService() :
-            base(string.Format(ConfigurationManager.ConnectionStrings[CONST_APP_CONNECTION_KEY].ConnectionString,
-                HttpContext.Current.Server.MapPath("~/Database")),
-            DBOperatorType.OleDBOperator) { }
-#endif
-
-        protected DBOperatorBase _db { get { return op; } }
         /// <summary>
         /// Retrieve a new service instance. It's thread-safe.
         /// </summary>
