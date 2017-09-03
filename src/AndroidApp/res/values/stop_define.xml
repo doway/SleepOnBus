@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="btnOK">OK</string>
+	<string name="stopDefineTitle">Tell me the stop name you would get off</string>
+	<string name="currentLocation">Your current latitude：</string>
+	<string name="targetLocation">Your destination latitude：</string>
+	<string name="chosenLine">Pick traffic line:</string>
+	<string name="lblInputStopName">Stop name:</string>
+	<string name="lblCreateStop">Build up the stop data</string>
+	<string name="beginDetectingDirectly">Begin to detect by this stop now?</string>
+	<string name="stopHasBeenEstablished">Stop built success. You can move on the next one or go back to previous page.</string>
+	<string name="locationNameNotFound">There is no stop match the name you input. Try by the other name?</string>
+	<string name="confirmNewStopLoc">Move the stop icon to the correct position on the map, and press [OK] button.</string>
+	<string name="txtSearchTip">Find the location where you are going by input the address or landmark.</string>
+	<string name="pleaseTellusWhereTheStopIs">Please click the map to indicate the stop position.</string>
+	<string name="pleaseInputStopName">Please input the stop name</string>
+</resources>

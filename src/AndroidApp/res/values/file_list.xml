@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="backTo">BACK TO ROOT</string>
+	<string name="backToPrevious">BACK TO PARENT</string>
+	<string name="sysBuiltIn">&lt;SYSTEM BUILT-IN&gt;</string>
+	<string name="userChoose">&lt;Choose any sound file in your device&gt;</string>
+	<string name="pleaseChooseAlertSound">Please indicate which file to be the alert sound:</string>
+	<string name="searching">Searching...\nIt could take long time at the 1st initial time if your device has too many files. Please be patient...</string>
+</resources>

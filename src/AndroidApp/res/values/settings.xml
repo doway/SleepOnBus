@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="ok">OK</string>
+    <string name="save">SAVE</string>
+    <string name="alertSetting">System Setting</string>
+    <string name="choseAlertSound">Choose the alert sound</string>
+    <string name="playSound">Test the sound playing</string>
+    <string name="stopPlaySound">Stop playing sound</string>
+    <string name="effected">The setting has been effected</string>
+    <string name="setupAwareDistance">Set the awareness distance</string>
+    <string name="whenInsideMeter01">Alert me in</string>
+    <string name="whenInsideMeter02"> meter from the destination</string>
+    <string name="setupAwareLine">Set the smart traffic filter</string>
+    <string name="whenStopInsideMeter01">List traffic lines in</string>
+    <string name="whenStopInsideMeter02"> meter around me</string>
+    <string name="chooseSoundFile">Choose sound file</string>
+    <string name="setupShockAlert">Set the vibration alarm</string>
+    <string name="enableShockAlert">Enable vibration?</string>
+    <string name="enableAutoVolumn">Auto-adjust sound volume when alerting?</string>
+
+    <array name="soundList">
+        <item>Standard</item>
+        <item>Get up!</item>
+        <item>Fire the hole!</item>
+        <item>Get out!</item>
+        <item>Silence</item>
+    </array>
+
+</resources>

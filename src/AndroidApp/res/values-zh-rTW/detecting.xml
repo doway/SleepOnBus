@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="detectingTitle">已開始偵測，您可安心離開本程式</string>
+	<string name="detectingDisableTitle">偵測停止，您可離開本程式</string>
+	<string name="btnStopDetect">停止偵測</string>
+	<string name="ratingInstruction">這是你要去的站嗎?</string>
+	<string name="ratingBad">  錯誤  </string>
+	<string name="ratingGood">  正確  </string>
+	<string name="addToMyFavorite">加入私人清單</string>
+	<string name="back">回上一頁</string>
+	<string name="ifLocationWrong">謝謝您的回報，該站點錯誤已經回報給管理員.</string>
+	<string name="doneInAddingFavorite">已成功加入私人清單</string>
+</resources>

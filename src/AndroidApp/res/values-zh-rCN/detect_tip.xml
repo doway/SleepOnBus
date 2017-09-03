@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="detectTip01">　　已经开始检测，您可随时进入选单内的 [ 设置 ] 画面内更改检测的距离，会立即生效并不需要重新引导程序。</string>
+	<string name="detectTip02">　　根据经验，如果您不是通过 GPS 这种较精准的定位 ( GPS 非常耗电 ) ，速度越快的交通工具，设置的检测距离则越大。</string>
+	<string name="detectTip03">　　例如市区公车设为 500 公尺即可，捷运则推荐设为 1000 公尺内就要开始提示您准备下车。</string>
+	<string name="setupNow">现在就设置</string>
+</resources>
+

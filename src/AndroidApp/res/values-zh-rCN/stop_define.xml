@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="btnOK">地点确定</string>
+	<string name="stopDefineTitle">告诉我你要的站点</string>
+	<string name="currentLocation">您当前所在经纬度：</string>
+	<string name="targetLocation">目的地所在经纬度：</string>
+	<string name="chosenLine">选择路线：</string>
+	<string name="lblInputStopName">站点名称:</string>
+	<string name="lblCreateStop">站点数据建档</string>
+	<string name="beginDetectingDirectly">直接进行此站点检测?</string>
+	<string name="stopHasBeenEstablished">站点数据已经创建成功, 您可继续新增其它站点, 或是返回上一页.</string>
+	<string name="locationNameNotFound">找不到您说的地点, 换个名称试试?</string>
+	<string name="confirmNewStopLoc">移动站牌图案到正确的位置, 然后点[地点确定]按钮</string>
+	<string name="txtSearchTip">输入地址或地标找到你要去的地点</string>
+	<string name="pleaseTellusWhereTheStopIs">请先点击地图告诉我们站牌的位置</string>
+	<string name="pleaseInputStopName">请输入站点名称</string>
+</resources>
+

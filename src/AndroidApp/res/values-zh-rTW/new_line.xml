@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="lineSetupTip">請輸入你要搭乘的運輸路線名稱, 例如 [22] 或 [捷運板南線], 而&quot;不是&quot;輸入站牌名稱喔:</string>    
+</resources>

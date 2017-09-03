@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="detectTip01">　　已經開始偵測，您可隨時進入選單內的 [ 設定 ] 畫面內更改偵測的距離，會立即生效並不需要重新啟動程式。</string>
+	<string name="detectTip02">　　根據經驗，如果您不是透過 GPS 這種較精準的定位 ( GPS 非常耗電 ) ，速度越快的交通工具，設定的偵測距離則越大。</string>
+	<string name="detectTip03">　　例如市區公車設為 500 公尺即可，捷運則建議設為 1000 公尺內就要開始提示您準備下車。</string>
+	<string name="setupNow">現在就設定</string>
+</resources>

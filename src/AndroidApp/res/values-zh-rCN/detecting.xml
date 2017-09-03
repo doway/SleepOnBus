@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="detectingTitle">已开始检测，您可安心离开本程序</string>
+	<string name="detectingDisableTitle">检测停止，您可离开本程序</string>
+	<string name="btnStopDetect">停止检测</string>
+	<string name="ratingInstruction">这是你要去的站吗?</string>
+	<string name="ratingBad">  错误  </string>
+	<string name="ratingGood">  正确  </string>
+	<string name="addToMyFavorite">加入私人清单</string>
+	<string name="back">回上一页</string>
+	<string name="ifLocationWrong">谢谢您的回报，该站点错误已经回报给管理员.</string>
+	<string name="doneInAddingFavorite">已成功加入私人清单</string>
+</resources>
+

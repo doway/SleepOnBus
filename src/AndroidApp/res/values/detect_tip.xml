@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="detectTip01">　　Begin the detecting. You can change the awareness distance by setting page at any time, and take it effect immediately.</string>
+	<string name="detectTip02">　　Within past experience, faster traffic line you take needs larger awareness distance.</string>
+	<string name="detectTip03">　　Eg, 500m is quite enough for city bus, but rapid train needs 1km as its awareness distance to alert you for getting off.</string>
+	<string name="setupNow">Setup it NOW.</string>
+</resources>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+	android:id="@+id/tableLayout1" android:layout_height="fill_parent"
+	android:layout_width="fill_parent">
+	<TextView android:id="@+id/txtLayoutTitle"
+		android:layout_width="fill_parent" style="@style/main_title"
+		android:layout_height="wrap_content" android:text="@string/stopDefineTitle"
+		android:gravity="center" />
+	<TextView android:text="@string/chosenLine" style="@style/content"
+		android:layout_below="@+id/txtLayoutTitle" android:id="@+id/txtChosenLine"
+		android:layout_width="wrap_content" android:layout_height="wrap_content" />
+	<EditText android:id="@+id/edSearch" android:layout_below="@+id/txtChosenLine"
+		android:layout_toLeftOf="@+id/btnMap" android:layout_alignParentLeft="true"
+		android:onClick="edSearchOnClick" android:layout_height="wrap_content"
+		android:layout_width="wrap_content" android:text="@string/txtSearchTip" />
+	<ImageButton android:layout_width="wrap_content"
+		android:layout_below="@+id/txtChosenLine"
+		android:layout_alignParentRight="true" android:gravity="right"
+		android:id="@+id/btnMap" android:onClick="btnSearchOnClick"
+		android:layout_height="wrap_content" android:src="@android:drawable/ic_menu_search" />
+	<TextView android:id="@+id/txtCurrentLocation"
+		android:layout_above="@+id/txtTargetLocation" android:layout_width="fill_parent"
+		android:layout_height="wrap_content" android:text="@string/currentLocation" />
+	<TextView android:id="@+id/txtTargetLocation"
+		android:layout_above="@+id/layoutMapControl" android:layout_width="fill_parent"
+		android:layout_height="wrap_content" android:text="@string/targetLocation" />
+	<com.google.ads.AdView android:id="@+id/ad1"
+		android:layout_alignParentBottom="true" android:layout_width="wrap_content"
+		android:layout_height="wrap_content" ads:adUnitId="a14e94630d2b494"
+		ads:adSize="BANNER" ads:loadAdOnCreate="true" />
+	<com.google.android.maps.MapView
+		android:layout_above="@+id/txtCurrentLocation" android:id="@+id/map"
+		android:layout_width="fill_parent" android:clickable="true"
+		android:apiKey="059Ciws6H5p0iV8oK0Wr4gcCYEVq-61ZjgKLMJw"
+		android:layout_height="wrap_content" android:layout_below="@+id/btnMap" />
+	<LinearLayout android:id="@+id/layoutMapControl"
+		android:layout_above="@+id/ad1" android:layout_height="wrap_content"
+		android:orientation="horizontal" android:layout_width="fill_parent"
+		android:gravity="center_horizontal">
+		<Button android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:id="@+id/btnZoomIn"
+			android:text="  +  " android:onClick="btnZoomInOnClick"></Button>
+		<Button android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:id="@+id/btnZoomOut"
+			android:text="  -  " android:onClick="btnZoomOutOnClick"></Button>
+		<Button android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:id="@+id/btnOK"
+			android:text="@string/btnOK" android:onClick="btnOKOnClick"></Button>
+	</LinearLayout>
+</RelativeLayout>

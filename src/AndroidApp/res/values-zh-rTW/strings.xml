@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">車上安心睡</string>
+	<string name="about">關於本程式</string>
+	<string name="feedback">給我們建議</string>
+	<string name="sweetTipTitle">貼心提醒</string>
+	<string name="neverRemind">明白了，別再提醒</string>
+	<string name="agree">同意</string>
+	<string name="disagree">不同意</string>
+	<string name="detecting">偵測中</string>
+	<string name="mine">(我的)</string>
+	<string name="waiting">請稍候片刻...</string>
+	<string name="loading">資料讀取中...</string>
+</resources>

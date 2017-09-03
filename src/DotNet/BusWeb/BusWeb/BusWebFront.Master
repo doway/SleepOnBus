@@ -1,0 +1,49 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="BusWebFront.master.cs"
+    Inherits="BusWeb.BusWebFront" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server" />
+    <table width="100%" border="1" cellpadding="0" cellspacing="0">
+        <tr>
+            <td>
+                <table width="100%" border="1" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td>
+                            <asp:LinkButton ID="lbtnLogout" runat="server" OnClick="lbtnLogout_Click">登出</asp:LinkButton>
+                            &nbsp;<asp:HyperLink ID="hlAnything" runat="server" NavigateUrl="~/Anything.aspx">萬能指令</asp:HyperLink>
+                            &nbsp;<asp:HyperLink ID="hlDataManager" runat="server" NavigateUrl="~/DataManager.aspx">站點資料管理</asp:HyperLink>
+                            &nbsp;<asp:HyperLink ID="hlAddNew" runat="server" NavigateUrl="~/AddNew.aspx">新增路線或站點</asp:HyperLink>
+                        </td>
+                        <td>
+                            <asp:Button ID="btnRemoveEmptyLines" runat="server" OnClick="btnRemoveEmptyLines_Click"
+                                Text="清除空白路線" />
+                            <asp:Button ID="btnMerge" runat="server" OnClick="btnMerge_Click" Text="自動合併路線" />
+                            <asp:TextBox ID="txtLineId1" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtLineId2" runat="server"></asp:TextBox>
+                            <asp:Button ID="btnManualMerge" runat="server" onclick="btnManualMerge_Click" 
+                                Text="手動合併兩路線" />
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div>
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+            </td>
+        </tr>
+    </table>
+    </form>
+</body>
+</html>
