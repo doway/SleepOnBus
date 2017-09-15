@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.Linq;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
@@ -27,138 +28,101 @@ namespace BusWeb.DAO
             return new BusWebDataService();
         }
 
-        public void LogAUsageCase(DsBusWeb.UsageStatisticRow dr)
+        public void LogAUsageCase(string userCode, double longitude, double latitude, double radius, byte device)
         {
             try
             {
-                ExecuteNonQuery(string.Format("INSERT INTO UsageStatistic(UserCode, Longitude, Latitude, Radius, Device) VALUES({0}, {1}, {2}, {3}, {4})",
-                    OleDbStrHelper.getParamStr(dr.UserCode),
-                    OleDbStrHelper.getParamStr(new decimal(dr.Longitude)),
-                    OleDbStrHelper.getParamStr(new decimal(dr.Latitude)),
-                    OleDbStrHelper.getParamStr(new decimal(dr.Radius)),
-                    OleDbStrHelper.getParamStr(dr.Device)
-                    ));
+                using (var db = new BusStopDataContext())
+                    db.LogAUsageCase(userCode, longitude, latitude, radius, device);
             }
-            catch (Exception ex) { Trace.WriteLine(ex); }
-        }
-
-        public int InsertNewLine(DsBusWeb.LinesRow dr)
-        {
-            ExecuteNonQuery(string.Format("INSERT INTO Lines(LineName, Culture) VALUES({0}, {1})",
-                OleDbStrHelper.getParamStr(dr.LineName),
-                OleDbStrHelper.getParamStr(dr.Culture)));
-            return Convert.ToInt32(ExecuteScalar("SELECT MAX(LineID) FROM Lines"));
-        }
-
-        public void UpdateLine(DsBusWeb.LinesRow dr)
-        {
-            ExecuteNonQuery(string.Format("UPDATE Lines SET LineName={0} WHERE LineID={1}",
-                OleDbStrHelper.getParamStr(dr.LineName),
-                OleDbStrHelper.getParamStr(dr.LineID)));
-        }
-
-        public int InsertNewStop(DsBusWeb.StopsRow dr)
-        {
-            _db.Open();
-            _db.BeginTrans();
-            int stopID = 0;
-            try
+            catch (Exception ex)
             {
-                _db.ExecuteCommand.CommandText = string.Format("INSERT INTO Stops(StopName, Longitude, Latitude, CreatorLongitude, CreatorLatitude, Owner, Culture) VALUES({0}, {1}, {2}, {3}, {4}, {5}, {6})",
-                    OleDbStrHelper.getParamStr(dr.StopName),
-                    OleDbStrHelper.getParamStr(new decimal(dr.Longitude)),
-                    OleDbStrHelper.getParamStr(new decimal(dr.Latitude)),
-                    OleDbStrHelper.getParamStr(new decimal(dr.CreatorLongitude)),
-                    OleDbStrHelper.getParamStr(new decimal(dr.CreatorLatitude)),
-                    OleDbStrHelper.getParamStr(dr.Owner),
-                    OleDbStrHelper.getParamStr(dr.Culture));
-                _db.Execute();
-                _db.ExecuteCommand.CommandText = "SELECT MAX(StopID) FROM Stops";
-                stopID = Convert.ToInt32(_db.ExecuteScalar());
-                _db.ExecuteCommand.CommandText = string.Format("INSERT INTO StopRating(StopID) VALUES({0})",
-                    OleDbStrHelper.getParamStr(stopID));
-                _db.Execute();
-                _db.CommitTrans();
+                _log.Error(ex.Message, ex);
             }
-            catch
+        }
+
+        public int InsertNewLine(string lineName, string culture)
+        {
+            int? lineId = 0;
+            using (var db = new BusStopDataContext())
+                db.InsertNewLine(lineName, culture, ref lineId);
+            return lineId ?? 0;
+        }
+
+        public void UpdateLine(string lineName, int lineID)
+        {
+            using (var db = new BusStopDataContext())
+                db.UpdateLine(lineID, lineName);
+        }
+
+        public int InsertNewStop(string stopName, double longitude, double latitude, double creatorLongitude, double creatorLatitude, string owner, string culture)
+        {
+            int? stopID = 0;
+
+            using (var db = new BusStopDataContext())
+                db.InsertNewStop(stopName, longitude, latitude, creatorLongitude, creatorLatitude, owner, culture, ref stopID);
+
+            return stopID ?? 0;
+        }
+
+        public void UpdateStop(string stopName, int stopID)
+        {
+            using (var db = new BusStopDataContext())
+                db.UpdateStop(stopID, stopName);
+        }
+
+        public void InsertNewLine2StopRelation(int lineID, int stopID)
+        {
+            using (var db = new BusStopDataContext())
+                db.InsertNewLine2StopRelation(lineID, stopID);
+        }
+
+        public IList<GetLinesListResult> GetLinesList(double longitude, double latitude, double radius, string owner)
+        {
+            using (var db = new BusStopDataContext())
+                return db.GetLinesList(owner, latitude, longitude, radius).ToList();
+        }
+
+        public IList<GetLinesListAllResult> GetLinesList()
+        {
+            using (var db = new BusStopDataContext())
+                return db.GetLinesListAll().ToList();
+        }
+
+        public IList<GetLinesListByDateResult> GetLinesList(DateTime stpBgnDT, DateTime stpEndDT)
+        {
+            using (var db = new BusStopDataContext())
+                return db.GetLinesListByDate(stpBgnDT, stpEndDT).ToList();
+        }
+
+        public IList<GetStopsByLineIDResult> GetStopsByLineID(int lineID)
+        {
+            using (var db = new BusStopDataContext())
+                return db.GetStopsByLineID(lineID).ToList();
+        }
+
+        public IList<GetStopsByLineIDResult> GetStopsByLineID(int lineID, string owner)
+        {
+            using (var db = new BusStopDataContext())
             {
-                _db.RollBack();
-                throw;
+                var dt = db.GetStopsByLineID(lineID).ToList();
+                if (!string.IsNullOrEmpty(owner))
+                    foreach (var dr in dt)
+                        if (dr.Owner == owner) dr.StopName = string.Format("{0}(*)", dr.StopName);
+                return dt;
             }
-            finally
-            {
-                _db.Close();
-            }
-
-            return stopID;
-        }
-
-        public void UpdateStop(DsBusWeb.StopsRow dr)
-        {
-            ExecuteNonQuery(string.Format("UPDATE Stops SET StopName={0} WHERE StopID={1}",
-                OleDbStrHelper.getParamStr(dr.StopName),
-                OleDbStrHelper.getParamStr(dr.StopID)));
-        }
-
-        public void InsertNewLine2StopRelation(DsBusWeb.Line2StopRow dr)
-        {
-            ExecuteNonQuery(string.Format("INSERT INTO Line2Stop(LineID, StopID) VALUES({0}, {1})",
-                OleDbStrHelper.getParamStr(dr.LineID),
-                OleDbStrHelper.getParamStr(dr.StopID)));
-        }
-
-        public DsBusWeb.LinesDataTable GetLinesList(double Longitude, double Latitude, double radius, string owner)
-        {
-            DsBusWeb.LinesDataTable dt = new DsBusWeb.LinesDataTable();
-            FillDt(string.Format("SELECT DISTINCT l.* FROM (Lines l INNER JOIN Line2Stop l2s ON l.LineID = l2s.LineID) INNER JOIN (SELECT StopID FROM Stops WHERE (Owner = {3}) OR (ABS(Longitude - {0}) < {2} AND ABS(Latitude - {1}) < {2})) tmp ON l2s.StopID = tmp.StopID ORDER BY LineName",
-                OleDbStrHelper.getParamStr(new decimal(Longitude)),
-                OleDbStrHelper.getParamStr(new decimal(Latitude)),
-                OleDbStrHelper.getParamStr(new decimal(radius)),
-                OleDbStrHelper.getParamStr(owner)), dt);
-            return dt;
-        }
-
-        public DsBusWeb.LinesDataTable GetLinesList()
-        {
-            DsBusWeb.LinesDataTable dt = new DsBusWeb.LinesDataTable();
-            FillDt("SELECT l.*, (SELECT COUNT(1) FROM Line2Stop l2s WHERE l2s.LineID = l.LineID) AS StopCount FROM Lines l ORDER BY l.LineName", dt);
-            return dt;
-        }
-
-        public DsBusWeb.LinesDataTable GetLinesList(DateTime stpBgnDT, DateTime stpEndDT)
-        {
-            DsBusWeb.LinesDataTable dt = new DsBusWeb.LinesDataTable();
-            FillDt(string.Format("SELECT l.*, (SELECT COUNT(1) FROM Line2Stop l2s WHERE l2s.LineID = l.LineID) AS StopCount FROM Lines l WHERE l.LineID IN (SELECT l2s.LineID FROM Line2Stop l2s INNER JOIN Stops s ON l2s.StopID = s.StopID WHERE s.DateCreated BETWEEN {0} AND {1}) ORDER BY l.LineName",
-                OleDbStrHelper.getParamStr(stpBgnDT),
-                OleDbStrHelper.getParamStr(stpEndDT)), dt);
-            return dt;
-        }
-
-        public DsBusWeb.StopsDataTable GetStopsByLineID(int lineID)
-        {
-            return GetStopsByLineID(lineID, null);
-        }
-
-        public DsBusWeb.StopsDataTable GetStopsByLineID(int lineID, string owner)
-        {
-            DsBusWeb.StopsDataTable dt = new DsBusWeb.StopsDataTable();
-            FillDt(string.Format("SELECT s.*, sr.RatingGood, sr.RatingBad FROM (Stops s INNER JOIN Line2Stop l2s ON s.StopID = l2s.StopID) INNER JOIN StopRating sr ON s.StopID = sr.StopID WHERE l2s.LineID={0} ORDER BY StopName",
-                OleDbStrHelper.getParamStr(lineID)),
-                dt);
-            if (!string.IsNullOrEmpty(owner))
-                foreach (var dr in dt)
-                    if (dr.Owner == owner) dr.StopName = string.Format("{0}(*)", dr.StopName);
-            return dt;
         }
 
         public void RateStopGood(int stopID)
         {
-            ExecuteNonQuery(string.Format("UPDATE StopRating SET RatingGood=RatingGood + 1 WHERE StopID={0}", OleDbStrHelper.getParamStr(stopID)));
+            using (var db = new BusStopDataContext())
+                db.RateStopGood(stopID);
         }
 
         public void RateStopBad(int stopID)
         {
-            ExecuteNonQuery(string.Format("UPDATE StopRating SET RatingBad=RatingBad + 1 WHERE StopID={0}", OleDbStrHelper.getParamStr(stopID)));
+            using (var db = new BusStopDataContext())
+                db.RateStopBad(stopID);
         }
 
         public void DeleteStopByID(int stopID)
@@ -466,33 +430,6 @@ namespace BusWeb.DAO
             DoMerging(dupStops);
             dupStops.Clear();
             #endregion
-        }
-        /// <summary>
-        /// Execute any command
-        /// </summary>
-        /// <param name="cmdText">Command text</param>
-        /// <returns>Effect row count</returns>
-        public int ExecuteAnything(string cmdText)
-        {
-            return ExecuteNonQuery(cmdText);
-        }
-        /// <summary>
-        /// Query any data
-        /// </summary>
-        /// <param name="cmdText">Query statement</param>
-        /// <returns></returns>
-        public DataTable QueryAnything(string cmdText)
-        {
-            if (cmdText.ToUpper().StartsWith("SELECT "))
-            {
-                DataTable dt = new DataTable();
-                FillDt(cmdText, dt);
-                return dt;
-            }
-            else
-            {
-                throw new ArgumentException("The query statement is not begin with [SELECT]!");
-            }
         }
 
         private static double GetDeltaRadius(double deltaKM)
