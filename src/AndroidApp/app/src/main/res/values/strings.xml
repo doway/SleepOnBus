@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">Sleep well on traffic</string>
+	<string name="about">About this APP</string>
+	<string name="feedback">Feedback us</string>
+	<string name="sweetTipTitle">Sweet tips</string>
+	<string name="neverRemind">Never remind me again.</string>
+	<string name="agree">Agree</string>
+	<string name="disagree">Disagree</string>
+	<string name="detecting">DETECTING...</string>
+	<string name="mine">(Mine)</string>
+	<string name="waiting">Please wait a sec...</string>
+	<string name="loading">Loading data...</string>
+</resources>

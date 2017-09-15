@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="backTo">回到根目录</string>
+	<string name="backToPrevious">回到上一层</string>
+	<string name="sysBuiltIn">&lt;系统内置音效&gt;</string>
+	<string name="userChoose">&lt;选择手机内的音效文件&gt;</string>
+	<string name="pleaseChooseAlertSound">请指定到站提醒的音效:</string>
+	<string name="searching">寻找您手机内的声音文件...\n若手机内文件过多初次可能耗费较多时间, 请耐心等候...</string>
+</resources>
+

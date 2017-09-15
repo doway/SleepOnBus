@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="newVersion">本程序有新版本推出, 请更新后再使用</string>
+ 	<string name="lblLine">选择你想要搭乘的交通路线:</string>
+	<string name="pleaseChoose">&lt;请选择&gt;</string>
+	<string name="myPersonal">&lt;我的私人路线&gt;</string>
+	<string name="noWhatINeed">&lt;没有我要的&gt;</string>
+	<string name="ratingLine">交通路线:</string>
+	<string name="ratingStop">站点名称:</string>
+	<string name="lblDestination">选择你要下车的站点:</string>
+	<string name="createNewOne">找不到你要下车的站牌吗?</string>
+ 	<string name="txtNewLine">你要搭乘的客运路线?</string>
+	<string name="cancel">取消</string>
+ 	<string name="next">下一步</string>
+ 	<string name="currentLocNotAvailable">不能取得您的所在位置信息</string>   
+	<string name="btnBeginDetect">开始检测</string>
+	<string name="enterEditingMode">你已进入站点编辑模式, 可以删除您自己设立的站点或是&lt;我的私人路线&gt;内的站点</string>
+	<string name="exitEditingMode">你已离开站点编修模式</string>
+	<string name="removeStop">你即将从清单内删除此站点, 确定吗?</string>
+	<string name="errorNotRemove">不能删除该站点, 可能你并非该站点的拥有者</string>
+	<string name="stopRemoved">该站点已从清单内删除</string>
+	<string name="editPersonal">删除站点</string>
+	<string name="exitEditPersonal">结束删除功能</string>
+</resources>
+

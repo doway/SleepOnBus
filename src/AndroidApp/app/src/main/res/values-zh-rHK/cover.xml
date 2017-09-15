@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="coverTitle">提示說明</string>
+	<string name="intro">　　使用本程式，不用再擔心在交通工具上會睡過頭...\n　　只要在本程式上設定您搭乘的路線，要下車的站牌，然後就可以安心睡覺或作其他事情，直到本程式用提醒您該準備下車了！\n　　偵測距離可自行設定，按下手機 [menu] 可找到設定功能。</string>
+</resources>

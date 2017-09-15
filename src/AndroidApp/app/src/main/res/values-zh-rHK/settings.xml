@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="ok">OK</string>
+    <string name="save">儲存</string>
+    <string name="alertSetting">系統設定</string>
+    <string name="choseAlertSound">選擇警告音效</string>
+    <string name="playSound">測試警告音效</string>
+    <string name="stopPlaySound">停止</string>
+    <string name="effected">設定已生效</string>
+    <string name="setupAwareDistance">設定偵測感應距離</string>
+    <string name="whenInsideMeter01">當目的地距離我</string>
+    <string name="whenInsideMeter02">公尺以內提醒我</string>
+    <string name="setupAwareLine">設定智慧型路線過濾器</string>
+    <string name="whenStopInsideMeter01">列出在我</string>
+    <string name="whenStopInsideMeter02">公尺以內有經過的客運路線</string>
+    <string name="chooseSoundFile">挑選警告音效檔案</string>
+    <string name="setupShockAlert">設定震動提示功能</string>
+    <string name="enableShockAlert">啟用震動提示？ </string>
+    <string name="enableAutoVolumn">自動音量調整</string>
+
+    <array name="soundList">
+        <item>標準</item>
+        <item>起床!!!</item>
+        <item>快逃!!!</item>
+        <item>滾出去!!</item>
+        <item>（靜音）</item>
+    </array>
+
+</resources>

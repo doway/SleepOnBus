@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="feedbackDesc">Thanks for using this APP. Your valuable opinion is what could make this APP more perfect. Please feel free to tell us anything about it.</string>
+    <string name="submit">SEND</string>    
+    <string name="sending">SUBMIT...</string> 
+</resources>

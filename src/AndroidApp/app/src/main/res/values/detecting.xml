@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="detectingTitle">The detecting is on-going, you can exit this APP safely.</string>
+	<string name="detectingDisableTitle">The detecting stopped, you can exit this APP.</string>
+	<string name="btnStopDetect">STOP DETECTING</string>
+	<string name="ratingInstruction">Is this the stop where you would go now?</string>
+	<string name="ratingBad">  WRONG  </string>
+	<string name="ratingGood">  CORRECT  </string>
+	<string name="addToMyFavorite">Add it as my private prefer one.</string>
+	<string name="back">BACK</string>
+	<string name="ifLocationWrong">Thanks for your feedback. We know this is a wrong stop now.</string>
+	<string name="doneInAddingFavorite">Added successfully</string>
+</resources>

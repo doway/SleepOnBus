@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="lineSetupTip">Please input the traffic line which you are going to take. Eg:[22A] or [1095]. &quot;DO NOT&quot; input the stop name:</string>    
+</resources>

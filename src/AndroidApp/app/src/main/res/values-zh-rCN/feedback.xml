@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="feedbackDesc">感谢您使用 [车上安心睡]，您宝贵的意见是本程序不断进步的原动力。欢迎任何推荐或是您的不满告诉我们:</string>
+    <string name="submit">送出</string>    
+    <string name="sending">发信中...</string> 
+</resources>
+

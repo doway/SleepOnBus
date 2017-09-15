@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="publicTip01">　　您在本程式內看到的路線站點資料，是由眾多熱心的網友輸入所建立。而您將輸入的站點資料也將會公開給其他本程式的使用者。</string>
+	<string name="publicTip02">　　為了維護資料的正確性，所有資料將無條件接受 [ 多維資訊 ] 管理，若資料錯誤、無意義或是重複， [ 多維資訊 ] 有權利予以修改或是刪除，不另行告知。</string>
+</resources>

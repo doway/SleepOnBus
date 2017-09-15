@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+	android:orientation="vertical" android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+	<TextView android:id="@+id/txtLayoutTitle"
+		android:layout_width="fill_parent" android:gravity="center" style="@style/main_title"
+		android:layout_height="wrap_content" android:text="@string/detectingTitle"
+		android:visibility="gone" />
+	<com.google.android.maps.MapView
+		android:id="@+id/map" android:layout_width="fill_parent"
+		android:clickable="true" android:enabled="true"
+		android:apiKey="059Ciws6H5p0iV8oK0Wr4gcCYEVq-61ZjgKLMJw"
+		android:layout_height="wrap_content" android:layout_above="@+id/btnStopDetect"
+		android:layout_below="@+id/layoutMapControl" />
+	<Button android:layout_height="wrap_content" android:text="@string/btnStopDetect"
+		android:id="@+id/btnStopDetect" android:layout_width="fill_parent"
+		android:onClick="btnStopDetectOnClick" android:layout_above="@+id/ad1" />
+	<LinearLayout android:id="@+id/layoutMapControl"
+		android:layout_below="@+id/txtLayoutTitle" android:layout_height="wrap_content"
+		android:orientation="horizontal" android:layout_width="fill_parent"
+		android:gravity="center_horizontal">
+		<Button android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:id="@+id/btnZoomIn"
+			android:text="  +  " android:onClick="btnZoomInOnClick"></Button>
+		<Button android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:id="@+id/btnZoomOut"
+			android:text="  -  " android:onClick="btnZoomOutOnClick"></Button>
+	</LinearLayout>
+	<LinearLayout android:orientation="vertical" android:id="@+id/stopReportLayout"
+		android:gravity="center" android:layout_width="fill_parent"
+		android:layout_height="wrap_content" android:layout_above="@+id/ad1"
+		android:background="#000000">
+		<TextView android:text="@string/ratingLine" android:id="@+id/lblLine"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			style="@style/content"></TextView>
+		<TextView android:text="@string/ratingStop" android:id="@+id/lblStopName"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			style="@style/content"></TextView>
+		<TextView android:text="@string/ratingInstruction"
+			android:id="@+id/lblRatingInstruction" android:layout_width="wrap_content"
+			android:layout_height="wrap_content" style="@style/content"></TextView>
+		<LinearLayout android:orientation="horizontal"
+			android:gravity="center_horizontal" android:layout_width="fill_parent"
+			android:layout_height="wrap_content">
+			<Button android:text="@string/back" android:id="@+id/btnBack"
+				android:onClick="btnBackOnClick" android:layout_width="wrap_content"
+				android:layout_height="wrap_content" />
+			<Button android:text="@string/ratingGood" android:id="@+id/btnRatingGood"
+				android:onClick="btnRatingGoodOnClick" android:layout_width="wrap_content"
+				android:layout_height="wrap_content" />
+
+			<Button android:text="@string/ratingBad" android:id="@+id/btnRatingBad"
+				android:onClick="btnRatingBadOnClick" android:layout_width="wrap_content"
+				android:layout_height="wrap_content" />
+
+			<Button
+			    android:id="@+id/btnAddToPersonal"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:text="@string/addToMyFavorite" android:onClick="btnAddToPersonalOnClick"/>
+
+		</LinearLayout>
+	</LinearLayout>
+	<com.google.ads.AdView android:id="@+id/ad1"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		ads:adUnitId="a14e94630d2b494" ads:adSize="BANNER" ads:loadAdOnCreate="true"
+		android:layout_alignParentBottom="true">
+	</com.google.ads.AdView>
+</RelativeLayout>

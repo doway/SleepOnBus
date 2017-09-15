@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="publicTip01">　　您在本程序内看到的路线站点数据，是由众多热心的网友输入所创建。而您将输入的站点数据也将会公开给其它本程序的用户。</string>
+	<string name="publicTip02">　　为了维护数据的正确性，所有数据将无条件接受 [ 多维信息 ] 管理，若数据错误、无意义或是重复， [ 多维信息 ] 有权利予以修改或是删除，不另行告知。</string>
+</resources>
+

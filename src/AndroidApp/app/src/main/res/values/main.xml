@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="newVersion">There is a newer version for you. Please update this APP to get the better service.</string>
+ 	<string name="lblLine">Choose which traffic line you would like:</string>
+	<string name="pleaseChoose">&lt;Please pick one&gt;</string>
+	<string name="myPersonal">&lt;My prefer list&gt;</string>
+	<string name="noWhatINeed">&lt;No one I like&gt;</string>
+	<string name="ratingLine">Traffic Name:</string>
+	<string name="ratingStop">Stop Name:</string>
+	<string name="lblDestination">Choose where you would like to get off:</string>
+	<string name="createNewOne">There is no what you want?</string>
+ 	<string name="txtNewLine">What is the name of the traffic line you would like now?</string>
+	<string name="cancel">CANCEL</string>
+ 	<string name="next">NEXT</string>
+ 	<string name="currentLocNotAvailable">No available your location information now</string>   
+	<string name="btnBeginDetect">BEGIN TO DETECT</string>
+	<string name="enterEditingMode">You are entering editing mode that you can remove the stop you established or any one in &lt;My prefer list&gt;</string>
+	<string name="exitEditingMode">You are quitting from editing mode</string>
+	<string name="removeStop">Are you sure you are going to remove this?</string>
+	<string name="errorNotRemove">Not removable due to you may not be the owner of this stop.</string>
+	<string name="stopRemoved">The stop has been removed.</string>
+	<string name="editPersonal">Remove Stop</string>
+	<string name="exitEditPersonal">Quit from editing mode</string>
+</resources>

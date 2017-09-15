@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:src="@drawable/background" />
+
+    <TextView
+        android:id="@+id/lblLine"
+        style="@style/content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lblLine" >
+    </TextView>
+
+    <Spinner
+        android:id="@+id/spLine"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lblLine"
+        android:prompt="@string/lblLine" >
+    </Spinner>
+
+    <TextView
+        android:id="@+id/lblDestination"
+        style="@style/content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/spLine"
+        android:text="@string/lblDestination"
+        android:visibility="invisible" >
+    </TextView>
+
+    <Spinner
+        android:id="@+id/spDestination"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lblDestination"
+        android:prompt="@string/lblDestination"
+        android:visibility="invisible" >
+    </Spinner>
+
+    <Button
+        android:id="@+id/btnCreateOne"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/ad1"
+        android:enabled="true"
+        android:onClick="btnCreateOneOnClick"
+        android:text="@string/createNewOne" />
+
+    <Button
+        android:id="@+id/btnBeginDetect"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/ad1"
+        android:enabled="true"
+        android:onClick="btnBeginDetectOnClick"
+        android:text="@string/btnBeginDetect"
+        android:visibility="invisible" />
+
+    <com.google.ads.AdView
+        android:id="@+id/ad1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="a14e94630d2b494"
+        ads:loadAdOnCreate="true" />
+
+    <TextView
+        android:id="@+id/tvMode"
+        style="@style/warn"
+        android:text="@string/enterEditingMode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btnCreateOne"
+        android:layout_centerHorizontal="true"
+        
+        android:layout_marginBottom="16dp" android:gravity="center_horizontal" android:visibility="gone"/>
+
+</RelativeLayout>

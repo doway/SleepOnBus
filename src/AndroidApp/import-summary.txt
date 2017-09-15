@@ -1,0 +1,193 @@
+ECLIPSE ANDROID PROJECT IMPORT SUMMARY
+======================================
+
+Ignored Files:
+--------------
+The following files were *not* copied into the new Gradle project; you
+should evaluate whether these are still needed in your project and if
+so manually move them:
+
+* .idea\
+* .idea\compiler.xml
+* .idea\copyright\
+* .idea\copyright\profiles_settings.xml
+* .idea\misc.xml
+* .idea\workspace.xml
+* app\
+* app\build.gradle
+* app\lint.xml
+* app\src\
+* app\src\main\
+* app\src\main\AndroidManifest.xml
+* app\src\main\java\
+* app\src\main\java\dowill\
+* app\src\main\java\dowill\SleepOnBus\
+* app\src\main\java\dowill\SleepOnBus\Activities\
+* app\src\main\java\dowill\SleepOnBus\Activities\AlertSoundPicker.java
+* app\src\main\java\dowill\SleepOnBus\Activities\DetectingMap.java
+* app\src\main\java\dowill\SleepOnBus\Activities\Main.java
+* app\src\main\java\dowill\SleepOnBus\Activities\Settings.java
+* app\src\main\java\dowill\SleepOnBus\Activities\StopDefine.java
+* app\src\main\java\dowill\SleepOnBus\Activities\WakeUp.java
+* app\src\main\java\dowill\SleepOnBus\BusDAO.java
+* app\src\main\java\dowill\SleepOnBus\CommonMenuProvider.java
+* app\src\main\java\dowill\SleepOnBus\Constants.java
+* app\src\main\java\dowill\SleepOnBus\DataAdapterFactory.java
+* app\src\main\java\dowill\SleepOnBus\MapManager.java
+* app\src\main\java\dowill\SleepOnBus\Model\
+* app\src\main\java\dowill\SleepOnBus\Model\LineInfo.java
+* app\src\main\java\dowill\SleepOnBus\Model\StopInfo.java
+* app\src\main\java\dowill\SleepOnBus\SoundManager.java
+* app\src\main\java\dowill\SleepOnBus\StopMarkOverlay.java
+* app\src\main\java\dowill\SleepOnBus\backend\
+* app\src\main\java\dowill\SleepOnBus\backend\BusWebservice.java
+* app\src\main\java\dowill\SleepOnBus\service\
+* app\src\main\java\dowill\SleepOnBus\service\DetectingService.java
+* app\src\main\res\
+* app\src\main\res\drawable-hdpi\
+* app\src\main\res\drawable-hdpi\background.jpg
+* app\src\main\res\drawable-hdpi\bus.png
+* app\src\main\res\drawable-hdpi\bus_notification.png
+* app\src\main\res\drawable-hdpi\dowill_logo.gif
+* app\src\main\res\drawable-hdpi\icon.jpg
+* app\src\main\res\drawable-hdpi\joanna.png
+* app\src\main\res\drawable-hdpi\man.png
+* app\src\main\res\drawable-zh-rCN-hdpi\
+* app\src\main\res\drawable-zh-rCN-hdpi\dowill_logo.gif
+* app\src\main\res\drawable-zh-rHK-hdpi\
+* app\src\main\res\drawable-zh-rHK-hdpi\dowill_logo.gif
+* app\src\main\res\drawable-zh-rTW-hdpi\
+* app\src\main\res\drawable-zh-rTW-hdpi\dowill_logo.gif
+* app\src\main\res\layout\
+* app\src\main\res\layout\about.xml
+* app\src\main\res\layout\cover.xml
+* app\src\main\res\layout\detect_tip.xml
+* app\src\main\res\layout\detecting.xml
+* app\src\main\res\layout\feedback.xml
+* app\src\main\res\layout\file_list.xml
+* app\src\main\res\layout\file_row.xml
+* app\src\main\res\layout\main.xml
+* app\src\main\res\layout\new_line.xml
+* app\src\main\res\layout\public_tip.xml
+* app\src\main\res\layout\settings.xml
+* app\src\main\res\layout\stop_define.xml
+* app\src\main\res\layout\stop_info_editor.xml
+* app\src\main\res\layout\wake_up.xml
+* app\src\main\res\raw-zh-rCN\
+* app\src\main\res\raw-zh-rCN\bus_getout.amr
+* app\src\main\res\raw-zh-rCN\bus_normal.amr
+* app\src\main\res\raw-zh-rCN\bus_runaway.amr
+* app\src\main\res\raw-zh-rCN\bus_wakeup.amr
+* app\src\main\res\raw-zh-rHK\
+* app\src\main\res\raw-zh-rHK\bus_getout.amr
+* app\src\main\res\raw-zh-rHK\bus_normal.amr
+* app\src\main\res\raw-zh-rHK\bus_runaway.amr
+* app\src\main\res\raw-zh-rHK\bus_wakeup.amr
+* app\src\main\res\raw-zh-rTW\
+* app\src\main\res\raw-zh-rTW\bus_getout.amr
+* app\src\main\res\raw-zh-rTW\bus_normal.amr
+* app\src\main\res\raw-zh-rTW\bus_runaway.amr
+* app\src\main\res\raw-zh-rTW\bus_wakeup.amr
+* app\src\main\res\raw\
+* app\src\main\res\raw\bus_getout.amr
+* app\src\main\res\raw\bus_normal.amr
+* app\src\main\res\raw\bus_runaway.amr
+* app\src\main\res\raw\bus_wakeup.amr
+* app\src\main\res\values-zh-rCN\
+* app\src\main\res\values-zh-rCN\about.xml
+* app\src\main\res\values-zh-rCN\color.xml
+* app\src\main\res\values-zh-rCN\cover.xml
+* app\src\main\res\values-zh-rCN\detect_tip.xml
+* app\src\main\res\values-zh-rCN\detecting.xml
+* app\src\main\res\values-zh-rCN\feedback.xml
+* app\src\main\res\values-zh-rCN\file_list.xml
+* app\src\main\res\values-zh-rCN\main.xml
+* app\src\main\res\values-zh-rCN\main_style.xml
+* app\src\main\res\values-zh-rCN\new_line.xml
+* app\src\main\res\values-zh-rCN\public_tip.xml
+* app\src\main\res\values-zh-rCN\settings.xml
+* app\src\main\res\values-zh-rCN\stop_define.xml
+* app\src\main\res\values-zh-rCN\strings.xml
+* app\src\main\res\values-zh-rCN\wake_up.xml
+* app\src\main\res\values-zh-rHK\
+* app\src\main\res\values-zh-rHK\about.xml
+* app\src\main\res\values-zh-rHK\color.xml
+* app\src\main\res\values-zh-rHK\cover.xml
+* app\src\main\res\values-zh-rHK\detect_tip.xml
+* app\src\main\res\values-zh-rHK\detecting.xml
+* app\src\main\res\values-zh-rHK\feedback.xml
+* app\src\main\res\values-zh-rHK\file_list.xml
+* app\src\main\res\values-zh-rHK\main.xml
+* app\src\main\res\values-zh-rHK\main_style.xml
+* app\src\main\res\values-zh-rHK\new_line.xml
+* app\src\main\res\values-zh-rHK\public_tip.xml
+* app\src\main\res\values-zh-rHK\settings.xml
+* app\src\main\res\values-zh-rHK\stop_define.xml
+* app\src\main\res\values-zh-rHK\strings.xml
+* app\src\main\res\values-zh-rHK\wake_up.xml
+* app\src\main\res\values-zh-rTW\
+* app\src\main\res\values-zh-rTW\about.xml
+* app\src\main\res\values-zh-rTW\color.xml
+* app\src\main\res\values-zh-rTW\cover.xml
+* app\src\main\res\values-zh-rTW\detect_tip.xml
+* app\src\main\res\values-zh-rTW\detecting.xml
+* app\src\main\res\values-zh-rTW\feedback.xml
+* app\src\main\res\values-zh-rTW\file_list.xml
+* app\src\main\res\values-zh-rTW\main.xml
+* app\src\main\res\values-zh-rTW\main_style.xml
+* app\src\main\res\values-zh-rTW\new_line.xml
+* app\src\main\res\values-zh-rTW\public_tip.xml
+* app\src\main\res\values-zh-rTW\settings.xml
+* app\src\main\res\values-zh-rTW\stop_define.xml
+* app\src\main\res\values-zh-rTW\strings.xml
+* app\src\main\res\values-zh-rTW\wake_up.xml
+* app\src\main\res\values\
+* app\src\main\res\values\about.xml
+* app\src\main\res\values\color.xml
+* app\src\main\res\values\cover.xml
+* app\src\main\res\values\detect_tip.xml
+* app\src\main\res\values\detecting.xml
+* app\src\main\res\values\feedback.xml
+* app\src\main\res\values\file_list.xml
+* app\src\main\res\values\main.xml
+* app\src\main\res\values\main_style.xml
+* app\src\main\res\values\new_line.xml
+* app\src\main\res\values\public_tip.xml
+* app\src\main\res\values\settings.xml
+* app\src\main\res\values\stop_define.xml
+* app\src\main\res\values\strings.xml
+* app\src\main\res\values\wake_up.xml
+* build.gradle
+* build.xml
+* gradle\
+* gradle\wrapper\
+* gradle\wrapper\gradle-wrapper.jar
+* gradle\wrapper\gradle-wrapper.properties
+* gradlew
+* gradlew.bat
+* settings.gradle
+
+Moved Files:
+------------
+Android Gradle projects use a different directory structure than ADT
+Eclipse projects. Here's how the projects were restructured:
+
+* AndroidManifest.xml => app\src\main\AndroidManifest.xml
+* lint.xml => app\lint.xml
+* res\ => app\src\main\res\
+* src\ => app\src\main\java\
+
+Next Steps:
+-----------
+You can now build the project. The Gradle project needs network
+connectivity to download dependencies.
+
+Bugs:
+-----
+If for some reason your project does not build, and you determine that
+it is due to a bug or limitation of the Eclipse to Gradle importer,
+please file a bug at http://b.android.com with category
+Component-Tools.
+
+(This import summary is for your information only, and can be deleted
+after import once you are satisfied with the results.)
