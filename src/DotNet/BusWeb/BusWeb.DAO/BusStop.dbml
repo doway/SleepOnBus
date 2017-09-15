@@ -1,1 +1,99 @@
-﻿
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BusStop" Class="BusStopDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=db.comeondata.com;Initial Catalog=BusStop;Persist Security Info=True;User ID=sa" SettingsObjectName="BusWeb.DAO.Properties.Settings" SettingsPropertyName="BusStopConnectionString" Provider="System.Data.SqlClient" />
+  <Function Name="dbo.GetLinesList" Method="GetLinesList">
+    <Parameter Name="pOwner" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="pLatitude" Type="System.Double" DbType="Float" />
+    <Parameter Name="pLongitude" Type="System.Double" DbType="Float" />
+    <Parameter Name="pRadius" Type="System.Double" DbType="Float" />
+    <ElementType Name="GetLinesListResult">
+      <Column Name="LineID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LineName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Culture" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.UpdateStop" Method="UpdateStop">
+    <Parameter Name="pStopID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="pStopName" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetLinesListByDate" Method="GetLinesListByDate">
+    <Parameter Name="pStpBgnDT" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="pStpEndDT" Type="System.DateTime" DbType="DateTime" />
+    <ElementType Name="GetLinesListByDateResult">
+      <Column Name="LineID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LineName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Culture" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="StopCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetStopsByLineID" Method="GetStopsByLineID">
+    <Parameter Name="pLineID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetStopsByLineIDResult">
+      <Column Name="StopID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="StopName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Longitude" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Latitude" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="CreatorLongitude" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="CreatorLatitude" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Owner" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Culture" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="RatingGood" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RatingBad" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.InsertNewLine" Method="InsertNewLine">
+    <Parameter Name="pLineName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="pCulture" Type="System.String" DbType="NVarChar(15)" />
+    <Parameter Name="oLineID" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.InsertNewLine2StopRelation" Method="InsertNewLine2StopRelation">
+    <Parameter Name="pLineID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="pStopID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.InsertNewStop" Method="InsertNewStop">
+    <Parameter Name="pStopName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="pLongitude" Type="System.Double" DbType="Float" />
+    <Parameter Name="pLatitude" Type="System.Double" DbType="Float" />
+    <Parameter Name="pCreatorLongitude" Type="System.Double" DbType="Float" />
+    <Parameter Name="pCreatorLatitude" Type="System.Double" DbType="Float" />
+    <Parameter Name="pOwner" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="pCulture" Type="System.String" DbType="NVarChar(15)" />
+    <Parameter Name="oStopID" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.LogAUsageCase" Method="LogAUsageCase">
+    <Parameter Name="pUserCode" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="pLongitude" Type="System.Double" DbType="Float" />
+    <Parameter Name="pLatitude" Type="System.Double" DbType="Float" />
+    <Parameter Name="pRadius" Type="System.Double" DbType="Float" />
+    <Parameter Name="pDevice" Type="System.Byte" DbType="TinyInt" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.UpdateLine" Method="UpdateLine">
+    <Parameter Name="pLineID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="pLineName" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetLinesListAll" Method="GetLinesListAll">
+    <ElementType Name="GetLinesListAllResult">
+      <Column Name="LineID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LineName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Culture" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="StopCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.RateStopGood" Method="RateStopGood">
+    <Parameter Name="pStopID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.RateStopBad" Method="RateStopBad">
+    <Parameter Name="pStopID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>

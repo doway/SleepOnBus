@@ -21,6 +21,6 @@ CREATE PROCEDURE [dbo].[UpdateLine]
 AS
 BEGIN
 	UPDATE Lines SET LineName = @pLineName
-	 WHERE LineID = @pLineID
+	WHERE LineID = @pLineID
 END
 GO

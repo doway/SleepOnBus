@@ -22,6 +22,7 @@ namespace BusWeb.DAO
 	using System;
 	
 	
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="BusStop")]
 	public partial class BusStopDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -30,6 +31,12 @@ namespace BusWeb.DAO
     #region Extensibility Method Definitions
     partial void OnCreated();
     #endregion
+		
+		public BusStopDataContext() : 
+				base(global::BusWeb.DAO.Properties.Settings.Default.BusStopConnectionString, mappingSource)
+		{
+			OnCreated();
+		}
 		
 		public BusStopDataContext(string connection) : 
 				base(connection, mappingSource)
@@ -53,6 +60,574 @@ namespace BusWeb.DAO
 				base(connection, mappingSource)
 		{
 			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetLinesList")]
+		public ISingleResult<GetLinesListResult> GetLinesList([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string pOwner, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Float")] System.Nullable<double> pLatitude, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Float")] System.Nullable<double> pLongitude, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Float")] System.Nullable<double> pRadius)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), pOwner, pLatitude, pLongitude, pRadius);
+			return ((ISingleResult<GetLinesListResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.UpdateStop")]
+		public int UpdateStop([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pStopID, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string pStopName)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), pStopID, pStopName);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetLinesListByDate")]
+		public ISingleResult<GetLinesListByDateResult> GetLinesListByDate([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> pStpBgnDT, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> pStpEndDT)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), pStpBgnDT, pStpEndDT);
+			return ((ISingleResult<GetLinesListByDateResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetStopsByLineID")]
+		public ISingleResult<GetStopsByLineIDResult> GetStopsByLineID([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pLineID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), pLineID);
+			return ((ISingleResult<GetStopsByLineIDResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.InsertNewLine")]
+		public int InsertNewLine([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string pLineName, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(15)")] string pCulture, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] ref System.Nullable<int> oLineID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), pLineName, pCulture, oLineID);
+			oLineID = ((System.Nullable<int>)(result.GetParameterValue(2)));
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.InsertNewLine2StopRelation")]
+		public int InsertNewLine2StopRelation([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pLineID, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pStopID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), pLineID, pStopID);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.InsertNewStop")]
+		public int InsertNewStop([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string pStopName, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Float")] System.Nullable<double> pLongitude, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Float")] System.Nullable<double> pLatitude, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Float")] System.Nullable<double> pCreatorLongitude, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Float")] System.Nullable<double> pCreatorLatitude, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string pOwner, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(15)")] string pCulture, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] ref System.Nullable<int> oStopID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), pStopName, pLongitude, pLatitude, pCreatorLongitude, pCreatorLatitude, pOwner, pCulture, oStopID);
+			oStopID = ((System.Nullable<int>)(result.GetParameterValue(7)));
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.LogAUsageCase")]
+		public int LogAUsageCase([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string pUserCode, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Float")] System.Nullable<double> pLongitude, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Float")] System.Nullable<double> pLatitude, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Float")] System.Nullable<double> pRadius, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="TinyInt")] System.Nullable<byte> pDevice)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), pUserCode, pLongitude, pLatitude, pRadius, pDevice);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.UpdateLine")]
+		public int UpdateLine([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pLineID, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string pLineName)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), pLineID, pLineName);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetLinesListAll")]
+		public ISingleResult<GetLinesListAllResult> GetLinesListAll()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<GetLinesListAllResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.RateStopGood")]
+		public int RateStopGood([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pStopID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), pStopID);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.RateStopBad")]
+		public int RateStopBad([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pStopID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), pStopID);
+			return ((int)(result.ReturnValue));
+		}
+	}
+	
+	public partial class GetLinesListResult
+	{
+		
+		private int _LineID;
+		
+		private string _LineName;
+		
+		private string _Culture;
+		
+		private System.DateTime _DateCreated;
+		
+		public GetLinesListResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LineID", DbType="Int NOT NULL")]
+		public int LineID
+		{
+			get
+			{
+				return this._LineID;
+			}
+			set
+			{
+				if ((this._LineID != value))
+				{
+					this._LineID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LineName", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string LineName
+		{
+			get
+			{
+				return this._LineName;
+			}
+			set
+			{
+				if ((this._LineName != value))
+				{
+					this._LineName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Culture", DbType="NVarChar(15)")]
+		public string Culture
+		{
+			get
+			{
+				return this._Culture;
+			}
+			set
+			{
+				if ((this._Culture != value))
+				{
+					this._Culture = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateCreated", DbType="DateTime NOT NULL")]
+		public System.DateTime DateCreated
+		{
+			get
+			{
+				return this._DateCreated;
+			}
+			set
+			{
+				if ((this._DateCreated != value))
+				{
+					this._DateCreated = value;
+				}
+			}
+		}
+	}
+	
+	public partial class GetLinesListByDateResult
+	{
+		
+		private int _LineID;
+		
+		private string _LineName;
+		
+		private string _Culture;
+		
+		private System.DateTime _DateCreated;
+		
+		private System.Nullable<int> _StopCount;
+		
+		public GetLinesListByDateResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LineID", DbType="Int NOT NULL")]
+		public int LineID
+		{
+			get
+			{
+				return this._LineID;
+			}
+			set
+			{
+				if ((this._LineID != value))
+				{
+					this._LineID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LineName", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string LineName
+		{
+			get
+			{
+				return this._LineName;
+			}
+			set
+			{
+				if ((this._LineName != value))
+				{
+					this._LineName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Culture", DbType="NVarChar(15)")]
+		public string Culture
+		{
+			get
+			{
+				return this._Culture;
+			}
+			set
+			{
+				if ((this._Culture != value))
+				{
+					this._Culture = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateCreated", DbType="DateTime NOT NULL")]
+		public System.DateTime DateCreated
+		{
+			get
+			{
+				return this._DateCreated;
+			}
+			set
+			{
+				if ((this._DateCreated != value))
+				{
+					this._DateCreated = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StopCount", DbType="Int")]
+		public System.Nullable<int> StopCount
+		{
+			get
+			{
+				return this._StopCount;
+			}
+			set
+			{
+				if ((this._StopCount != value))
+				{
+					this._StopCount = value;
+				}
+			}
+		}
+	}
+	
+	public partial class GetStopsByLineIDResult
+	{
+		
+		private int _StopID;
+		
+		private string _StopName;
+		
+		private double _Longitude;
+		
+		private double _Latitude;
+		
+		private double _CreatorLongitude;
+		
+		private double _CreatorLatitude;
+		
+		private string _Owner;
+		
+		private string _Culture;
+		
+		private System.DateTime _DateCreated;
+		
+		private int _RatingGood;
+		
+		private int _RatingBad;
+		
+		public GetStopsByLineIDResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StopID", DbType="Int NOT NULL")]
+		public int StopID
+		{
+			get
+			{
+				return this._StopID;
+			}
+			set
+			{
+				if ((this._StopID != value))
+				{
+					this._StopID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StopName", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string StopName
+		{
+			get
+			{
+				return this._StopName;
+			}
+			set
+			{
+				if ((this._StopName != value))
+				{
+					this._StopName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Longitude", DbType="Float NOT NULL")]
+		public double Longitude
+		{
+			get
+			{
+				return this._Longitude;
+			}
+			set
+			{
+				if ((this._Longitude != value))
+				{
+					this._Longitude = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Latitude", DbType="Float NOT NULL")]
+		public double Latitude
+		{
+			get
+			{
+				return this._Latitude;
+			}
+			set
+			{
+				if ((this._Latitude != value))
+				{
+					this._Latitude = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatorLongitude", DbType="Float NOT NULL")]
+		public double CreatorLongitude
+		{
+			get
+			{
+				return this._CreatorLongitude;
+			}
+			set
+			{
+				if ((this._CreatorLongitude != value))
+				{
+					this._CreatorLongitude = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatorLatitude", DbType="Float NOT NULL")]
+		public double CreatorLatitude
+		{
+			get
+			{
+				return this._CreatorLatitude;
+			}
+			set
+			{
+				if ((this._CreatorLatitude != value))
+				{
+					this._CreatorLatitude = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Owner", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Owner
+		{
+			get
+			{
+				return this._Owner;
+			}
+			set
+			{
+				if ((this._Owner != value))
+				{
+					this._Owner = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Culture", DbType="NVarChar(15)")]
+		public string Culture
+		{
+			get
+			{
+				return this._Culture;
+			}
+			set
+			{
+				if ((this._Culture != value))
+				{
+					this._Culture = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateCreated", DbType="DateTime NOT NULL")]
+		public System.DateTime DateCreated
+		{
+			get
+			{
+				return this._DateCreated;
+			}
+			set
+			{
+				if ((this._DateCreated != value))
+				{
+					this._DateCreated = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RatingGood", DbType="Int NOT NULL")]
+		public int RatingGood
+		{
+			get
+			{
+				return this._RatingGood;
+			}
+			set
+			{
+				if ((this._RatingGood != value))
+				{
+					this._RatingGood = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RatingBad", DbType="Int NOT NULL")]
+		public int RatingBad
+		{
+			get
+			{
+				return this._RatingBad;
+			}
+			set
+			{
+				if ((this._RatingBad != value))
+				{
+					this._RatingBad = value;
+				}
+			}
+		}
+	}
+	
+	public partial class GetLinesListAllResult
+	{
+		
+		private int _LineID;
+		
+		private string _LineName;
+		
+		private string _Culture;
+		
+		private System.DateTime _DateCreated;
+		
+		private System.Nullable<int> _StopCount;
+		
+		public GetLinesListAllResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LineID", DbType="Int NOT NULL")]
+		public int LineID
+		{
+			get
+			{
+				return this._LineID;
+			}
+			set
+			{
+				if ((this._LineID != value))
+				{
+					this._LineID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LineName", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string LineName
+		{
+			get
+			{
+				return this._LineName;
+			}
+			set
+			{
+				if ((this._LineName != value))
+				{
+					this._LineName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Culture", DbType="NVarChar(15)")]
+		public string Culture
+		{
+			get
+			{
+				return this._Culture;
+			}
+			set
+			{
+				if ((this._Culture != value))
+				{
+					this._Culture = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateCreated", DbType="DateTime NOT NULL")]
+		public System.DateTime DateCreated
+		{
+			get
+			{
+				return this._DateCreated;
+			}
+			set
+			{
+				if ((this._DateCreated != value))
+				{
+					this._DateCreated = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StopCount", DbType="Int")]
+		public System.Nullable<int> StopCount
+		{
+			get
+			{
+				return this._StopCount;
+			}
+			set
+			{
+				if ((this._StopCount != value))
+				{
+					this._StopCount = value;
+				}
+			}
 		}
 	}
 }
