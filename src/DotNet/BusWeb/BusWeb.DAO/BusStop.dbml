@@ -96,4 +96,22 @@
     <Parameter Name="pStopID" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
   </Function>
+  <Function Name="dbo.DeleteStopByID" Method="DeleteStopByID">
+    <Parameter Name="pStopID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetStopIDByOwnerAndStopID" Method="GetStopIDByOwnerAndStopID">
+    <Parameter Name="pStopID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="pOwner" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="GetStopIDByOwnerAndStopIDResult">
+      <Column Name="StopID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.DeleteLineByID" Method="DeleteLineByID">
+    <Parameter Name="pLineID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.RemoveEmptyLines" Method="RemoveEmptyLines">
+    <Return Type="System.Int32" />
+  </Function>
 </Database>

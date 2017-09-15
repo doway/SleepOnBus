@@ -13,8 +13,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bus.Model", "Bus.Model\Bus.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusWeb.DAO", "BusWeb.DAO\BusWeb.DAO.csproj", "{DCF08BDA-389D-409E-AA7B-75AD5679FEE3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusWeb.UnitTest", "BusWeb.UnitTest\BusWeb.UnitTest.csproj", "{26FEB296-C76D-44FA-AA50-CC19B2825A17}"
-EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = BusWeb.vsmdi
@@ -36,10 +34,6 @@ Global
 		{DCF08BDA-389D-409E-AA7B-75AD5679FEE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DCF08BDA-389D-409E-AA7B-75AD5679FEE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DCF08BDA-389D-409E-AA7B-75AD5679FEE3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{26FEB296-C76D-44FA-AA50-CC19B2825A17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{26FEB296-C76D-44FA-AA50-CC19B2825A17}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{26FEB296-C76D-44FA-AA50-CC19B2825A17}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{26FEB296-C76D-44FA-AA50-CC19B2825A17}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

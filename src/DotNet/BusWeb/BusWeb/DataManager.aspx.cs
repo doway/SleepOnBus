@@ -2,12 +2,11 @@
 using System.Data;
 using System.Web.UI.WebControls;
 using BusWeb.DAO;
-using BusWeb.DAO.DataSet;
-using DOWILL.Web;
+using System.Web.UI;
 
 namespace BusWeb
 {
-    public partial class DataManager : VersatilePage
+    public partial class DataManager : Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -27,22 +26,22 @@ namespace BusWeb
 
         private void Grid1Bind()
         {
-            using (var dao = BusWebDataService.GetServiceInstance())
+            var dao = BusWebDataService.GetServiceInstance();
             {
-                DataTable dt = dao.GetLinesList(bgnDatePicker.SelectedDate, endDatePicker.SelectedDate);
-                if (!string.IsNullOrEmpty(Grid1SortExp)) dt.DefaultView.Sort = Grid1SortExp + " " + ((Grid1SortDir == SortDirection.Ascending) ? "ASC" : "DESC");
-                GridView1.DataSource = dt.DefaultView;
+                var dt = dao.GetLinesList(bgnDatePicker.SelectedDate, endDatePicker.SelectedDate);
+                //if (!string.IsNullOrEmpty(Grid1SortExp)) dt.DefaultView.Sort = Grid1SortExp + " " + ((Grid1SortDir == SortDirection.Ascending) ? "ASC" : "DESC");
+                GridView1.DataSource = dt;//.DefaultView;
                 GridView1.DataBind();
             }
         }
 
         private void Grid2Bind()
         {
-            using (var dao = BusWebDataService.GetServiceInstance())
+            var dao = BusWebDataService.GetServiceInstance();
             {
-                DataTable dt = dao.GetStopsByLineID(LineID);
-                if (!string.IsNullOrEmpty(Grid2SortExp)) dt.DefaultView.Sort = Grid2SortExp + " " + ((Grid2SortDir == SortDirection.Ascending) ? "ASC" : "DESC");
-                GridView2.DataSource = dt.DefaultView;
+                var dt = dao.GetStopsByLineID(LineID);
+                //if (!string.IsNullOrEmpty(Grid2SortExp)) dt.DefaultView.Sort = Grid2SortExp + " " + ((Grid2SortDir == SortDirection.Ascending) ? "ASC" : "DESC");
+                GridView2.DataSource = dt;//.DefaultView;
                 GridView2.DataBind();
             }
         }
@@ -104,7 +103,7 @@ namespace BusWeb
         {
             Button btnID = (Button)GridView1.Rows[e.RowIndex].Cells[0].Controls[0];
             LineID = int.Parse(btnID.Text);
-            using (var dao = BusWebDataService.GetServiceInstance())
+            var dao = BusWebDataService.GetServiceInstance();
             {
                 dao.DeleteLineByID(LineID);
                 GridView1.DataSource = dao.GetLinesList();
@@ -120,7 +119,7 @@ namespace BusWeb
                 LineID = int.Parse(btnID.Text);
                 LineName = GridView1.Rows[int.Parse(e.CommandArgument.ToString())].Cells[1].Text;
                 lblParent.Text = string.Format("這是[ID={0}][{1}]路線的站點清單：", LineID, LineName);
-                using (var dao = BusWebDataService.GetServiceInstance())
+                var dao = BusWebDataService.GetServiceInstance();
                 {
                     GridView2.DataSource = dao.GetStopsByLineID(LineID);
                     GridView2.DataBind();
@@ -148,15 +147,9 @@ namespace BusWeb
 
         protected void GridView1_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
-            using (DsBusWeb ds = new DsBusWeb())
+            var dao = BusWebDataService.GetServiceInstance();
             {
-                var dr = ds.Lines.NewLinesRow();
-                dr.LineID = int.Parse(((Button)GridView1.Rows[e.RowIndex].Cells[0].Controls[0]).Text);
-                dr.LineName = ((TextBox)GridView1.Rows[e.RowIndex].Cells[1].Controls[0]).Text;
-                using (var dao = BusWebDataService.GetServiceInstance())
-                {
-                    dao.UpdateLine(dr);
-                }
+                dao.UpdateLine(((TextBox)GridView1.Rows[e.RowIndex].Cells[1].Controls[0]).Text, int.Parse(((Button)GridView1.Rows[e.RowIndex].Cells[0].Controls[0]).Text));
             }
             GridView1.EditIndex = -1;
             Grid1Bind();
@@ -166,7 +159,7 @@ namespace BusWeb
         #region GridView2 event handler
         protected void GridView2_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-            using (var dao = BusWebDataService.GetServiceInstance())
+            var dao = BusWebDataService.GetServiceInstance();
             {
                 dao.DeleteStopByID(int.Parse(GridView2.Rows[e.RowIndex].Cells[0].Text));
                 GridView2.DataSource = dao.GetStopsByLineID(LineID);
@@ -192,15 +185,9 @@ namespace BusWeb
 
         protected void GridView2_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
-            using (DsBusWeb ds = new DsBusWeb())
+            var dao = BusWebDataService.GetServiceInstance();
             {
-                var dr = ds.Stops.NewStopsRow();
-                dr.StopID = int.Parse(((TextBox)GridView2.Rows[e.RowIndex].Cells[0].Controls[0]).Text);
-                dr.StopName = ((TextBox)GridView2.Rows[e.RowIndex].Cells[1].Controls[0]).Text;
-                using (var dao = BusWebDataService.GetServiceInstance())
-                {
-                    dao.UpdateStop(dr);
-                }
+                dao.UpdateStop(((TextBox)GridView2.Rows[e.RowIndex].Cells[1].Controls[0]).Text, int.Parse(((TextBox)GridView2.Rows[e.RowIndex].Cells[0].Controls[0]).Text));
             }
             GridView2.EditIndex = -1;
             Grid2Bind();

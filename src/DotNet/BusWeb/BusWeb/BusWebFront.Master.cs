@@ -22,7 +22,7 @@ namespace BusWeb
 
         protected void btnRemoveEmptyLines_Click(object sender, EventArgs e)
         {
-            using (var db = BusWebDataService.GetServiceInstance())
+            var db = BusWebDataService.GetServiceInstance();
                 db.RemoveEmptyLines();
             Response.Redirect("~/DataManager.aspx");
             Response.End();
@@ -30,8 +30,8 @@ namespace BusWeb
 
         protected void btnMerge_Click(object sender, EventArgs e)
         {
-            using (var db = BusWebDataService.GetServiceInstance())
-                db.MergeLines();
+            var db = BusWebDataService.GetServiceInstance();
+                //db.MergeLines();
             Response.Redirect("~/DataManager.aspx");
             Response.End();
         }
@@ -39,8 +39,8 @@ namespace BusWeb
         protected void btnManualMerge_Click(object sender, EventArgs e)
         {
             bool success = false;
-            using (var db = BusWebDataService.GetServiceInstance())
-                success = db.MergeLines(int.Parse(txtLineId1.Text), int.Parse(txtLineId2.Text));
+            var db = BusWebDataService.GetServiceInstance();
+                //success = db.MergeLines(int.Parse(txtLineId1.Text), int.Parse(txtLineId2.Text));
 
             if (success)
             {

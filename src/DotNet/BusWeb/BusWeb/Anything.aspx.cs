@@ -11,18 +11,18 @@ namespace BusWeb
 
         protected void btnRun_Click(object sender, EventArgs e)
         {
-            using (var dao = BusWebDataService.GetServiceInstance())
+            var dao = BusWebDataService.GetServiceInstance();
             {
-                int effectRow = dao.ExecuteAnything(txtCmd.Text);
-                lblRowCount.Text = effectRow.ToString();
+                //int effectRow = dao.ExecuteAnything(txtCmd.Text);
+                //lblRowCount.Text = effectRow.ToString();
             }
         }
 
         protected void btnQry_Click(object sender, EventArgs e)
         {
-            using (var dao = BusWebDataService.GetServiceInstance())
+            var dao = BusWebDataService.GetServiceInstance();
             {
-                gvData.DataSource = dao.QueryAnything(txtCmd.Text);
+                //gvData.DataSource = dao.QueryAnything(txtCmd.Text);
                 gvData.DataBind();
             }
         }

@@ -147,6 +147,34 @@ namespace BusWeb.DAO
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), pStopID);
 			return ((int)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.DeleteStopByID")]
+		public int DeleteStopByID([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pStopID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), pStopID);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetStopIDByOwnerAndStopID")]
+		public ISingleResult<GetStopIDByOwnerAndStopIDResult> GetStopIDByOwnerAndStopID([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pStopID, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string pOwner)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), pStopID, pOwner);
+			return ((ISingleResult<GetStopIDByOwnerAndStopIDResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.DeleteLineByID")]
+		public int DeleteLineByID([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pLineID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), pLineID);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.RemoveEmptyLines")]
+		public int RemoveEmptyLines()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((int)(result.ReturnValue));
+		}
 	}
 	
 	public partial class GetLinesListResult
@@ -626,6 +654,32 @@ namespace BusWeb.DAO
 				if ((this._StopCount != value))
 				{
 					this._StopCount = value;
+				}
+			}
+		}
+	}
+	
+	public partial class GetStopIDByOwnerAndStopIDResult
+	{
+		
+		private int _StopID;
+		
+		public GetStopIDByOwnerAndStopIDResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StopID", DbType="Int NOT NULL")]
+		public int StopID
+		{
+			get
+			{
+				return this._StopID;
+			}
+			set
+			{
+				if ((this._StopID != value))
+				{
+					this._StopID = value;
 				}
 			}
 		}

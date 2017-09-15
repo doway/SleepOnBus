@@ -1,14 +1,13 @@
-﻿using System;
+﻿using Bus.Model;
+using BusWeb.DAO;
+using log4net;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Reflection;
 using System.Threading;
 using System.Web.UI;
-using Bus.Model;
-using BusWeb.DAO;
-using BusWeb.DAO.DataSet;
-using log4net;
-using Newtonsoft.Json;
 
 namespace BusWeb.Spi
 {
@@ -76,12 +75,9 @@ namespace BusWeb.Spi
 #endif
         {
             _log.Info(MethodInfo.GetCurrentMethod().Name);
-            var dr = new DsBusWeb.LinesDataTable().NewLinesRow();
-            dr.LineName = lineName;
-            dr.Culture = culture;
-            using (var db = BusWebDataService.GetServiceInstance())
+            var db = BusWebDataService.GetServiceInstance();
             {
-                return db.InsertNewLine(dr);
+                return db.InsertNewLine(lineName, culture);
             }
         }
 #if(DEBUG)
@@ -104,21 +100,9 @@ namespace BusWeb.Spi
             }
             #endregion
 
-            var dr = new DsBusWeb.StopsDataTable().NewStopsRow();
-            dr.Latitude = latitude;
-            dr.Longitude = longitude;
-            dr.StopName = stopName;
-            dr.CreatorLongitude = curLongitude;
-            dr.CreatorLatitude = curLatitude;
-            dr.Culture = culture;
-            dr.Owner = ((string.IsNullOrEmpty(owner)) ? "SYSTEM" : owner);
-
             var db = BusWebDataService.GetServiceInstance();
-            dr.StopID = db.InsertNewStop(dr);
-            var dr2 = new DsBusWeb.Line2StopDataTable().NewLine2StopRow();
-            dr2.StopID = dr.StopID;
-            dr2.LineID = lineID;
-            db.InsertNewLine2StopRelation(dr2);
+            int StopID = db.InsertNewStop(stopName, longitude, latitude, curLongitude, curLatitude, ((string.IsNullOrEmpty(owner)) ? "SYSTEM" : owner), culture);
+            db.InsertNewLine2StopRelation(lineID, StopID);
 
 
 
@@ -139,8 +123,8 @@ namespace BusWeb.Spi
         {
             _log.Info(MethodInfo.GetCurrentMethod().Name);
             BusWebDataService db = (BusWebDataService)obj;
-            db.RemoveBadRatingStops();
-            db.MergeLines();
+            //db.RemoveBadRatingStops();
+            //db.MergeLines();
         }
 #if(DEBUG)
         public LineInfo[] getLineList(double Longitude, double Latitude, double radius, string owner, byte device)
@@ -150,15 +134,9 @@ namespace BusWeb.Spi
         {
             _log.Info(MethodInfo.GetCurrentMethod().Name);
             List<LineInfo> list = new List<LineInfo>();
-            using (var db = BusWebDataService.GetServiceInstance())
+            var db = BusWebDataService.GetServiceInstance();
             {
-                DsBusWeb.UsageStatisticRow log = new DsBusWeb.UsageStatisticDataTable().NewUsageStatisticRow();
-                log.Device = device;
-                log.Latitude = Latitude;
-                log.Longitude = Longitude;
-                log.Radius = radius;
-                log.UserCode = owner;
-                db.LogAUsageCase(log);
+                db.LogAUsageCase(owner, Longitude, Latitude, radius, device);
                 var dt = db.GetLinesList(Longitude, Latitude, radius, owner);
                 foreach (var dr in dt) list.Add(new LineInfo() { LineID = dr.LineID, LineName = dr.LineName });
             }
@@ -169,7 +147,7 @@ namespace BusWeb.Spi
         {
             _log.Info(MethodInfo.GetCurrentMethod().Name);
             List<StopInfo> list = new List<StopInfo>();
-            using (var db = BusWebDataService.GetServiceInstance())
+            var db = BusWebDataService.GetServiceInstance();
             {
                 var dt = db.GetStopsByLineID(lineID, owner);
                 foreach (var dr in dt) list.Add(new StopInfo()
@@ -178,8 +156,8 @@ namespace BusWeb.Spi
                     StopName = dr.StopName,
                     Latitude = dr.Latitude,
                     Longtitude = dr.Longitude,
-                    Bad = Convert.ToInt32(dr["RatingBad"]),
-                    Good = Convert.ToInt32(dr["RatingGood"])
+                    Bad = dr.RatingBad,
+                    Good = dr.RatingGood
                 });
             }
             return list.ToArray();
@@ -188,7 +166,7 @@ namespace BusWeb.Spi
         private void rateStop(int stopID, string goodOrBad)
         {
             _log.Info(MethodInfo.GetCurrentMethod().Name);
-            using (var db = BusWebDataService.GetServiceInstance())
+            var db = BusWebDataService.GetServiceInstance();
                 switch (goodOrBad)
                 {
                     case "g":
@@ -207,7 +185,7 @@ namespace BusWeb.Spi
         {
             _log.Info(MethodInfo.GetCurrentMethod().Name);
             bool success = false;
-            using (var db = BusWebDataService.GetServiceInstance())
+            var db = BusWebDataService.GetServiceInstance();
                 if (0 != db.GetStopIDByOwnerAndStopID(stopID, owner))
                 {
                     db.DeleteStopByID(stopID);

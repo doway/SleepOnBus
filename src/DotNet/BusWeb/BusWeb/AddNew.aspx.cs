@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Web.UI;
 using BusWeb.DAO;
-using BusWeb.DAO.DataSet;
 
 namespace BusWeb
 {
@@ -17,7 +16,7 @@ namespace BusWeb
 
         private void refreshLineList()
         {
-            using (var dao = BusWebDataService.GetServiceInstance())
+            var dao = BusWebDataService.GetServiceInstance();
             {
                 var dt = dao.GetLinesList();
                 foreach (var dr in dt) dr.LineName = string.Format("{0}({1})", dr.LineName, dr.LineID);
@@ -29,34 +28,20 @@ namespace BusWeb
         protected void btnSend_Click(object sender, EventArgs e)
         {
             var gp = parseGMapUrl(txtGMapURL.Text);
-            using (var dao = BusWebDataService.GetServiceInstance())
+            var dao = BusWebDataService.GetServiceInstance();
             {
-                DsBusWeb ds = new DsBusWeb();
                 int lineID = 0;
                 if (!string.IsNullOrEmpty(txtNewLineName.Text))
                 {
-                    var dr = ds.Lines.NewLinesRow();
-                    dr.LineName = txtNewLineName.Text;
-                    lineID = dao.InsertNewLine(dr);
+                    lineID = dao.InsertNewLine(txtNewLineName.Text, "");
                 }
                 else
                 {
                     lineID = int.Parse(ddlLine.SelectedValue);
                 }
 
-                var dr2 = ds.Stops.NewStopsRow();
-                dr2.StopName = txtNewStopName.Text;
-                dr2.Latitude = gp.latitude;
-                dr2.Longitude = gp.longitude;
-                dr2.CreatorLatitude = 0d;
-                dr2.CreatorLongitude = 0d;
-                dr2.Owner = "SYSTEM";
-
-                dr2.StopID = dao.InsertNewStop(dr2);
-                var dr3 = new DsBusWeb.Line2StopDataTable().NewLine2StopRow();
-                dr3.StopID = dr2.StopID;
-                dr3.LineID = lineID;
-                dao.InsertNewLine2StopRelation(dr3);
+                int StopID = dao.InsertNewStop(txtNewStopName.Text, gp.longitude, gp.latitude, 0d, 0d, "SYSTEM", "");
+                dao.InsertNewLine2StopRelation(lineID, StopID);
             }
             if (!string.IsNullOrEmpty(txtNewLineName.Text)) refreshLineList();
             txtNewLineName.Text = string.Empty;
